@@ -11,7 +11,7 @@
 const request = require('request');
 const forecast = (lat,long,callback) => {
 
-    const url = 'https://api.darksky.net/forecast/af892970f49166a3d9a7e852425a0899/' + lat + ',' + long;
+        const url = 'https://api.darksky.net/forecast/af892970f49166a3d9a7e852425a0899/' + lat + ',' + long;
     request({ url, json : true}, (error,response) => {
         if (error)
         {
@@ -21,7 +21,7 @@ const forecast = (lat,long,callback) => {
             callback('Unable to find coordinate.try another search',undefined);
         }
         else {
-            callback(undefined, 'It is currently ' + response.body.currently.temperature + ' degrees out. There is a ' + response.body.currently.precipProbability + '% chance of rain.');
+            callback(undefined, 'It is currently ' + response.body.currently.temperature + ' degrees out.High today is :' + response.body.daily.data[0].temperatureHigh + 'Low today is: ' + response.body.daily.data[0].temperatureLow + ' There is a ' + response.body.currently.precipProbability + '% chance of rain.');
         }
 
     })
